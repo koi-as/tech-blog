@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const home = require('./homePage.js');
 const dashboard = require('./dashboard.js');
-const login = require('./login.js');
-const signup = require('./signup.js');
+const users = require('./api');
 
+// localhost:9352/
 router.use('/', home);
+// localhost:9352/dashboard
 router.use('/dashboard', dashboard);
-router.use('/login', login);
-router.use('/signup', signup);
+// localhost:9352/api
+router.use('/users', users);
 
 module.exports = router;
