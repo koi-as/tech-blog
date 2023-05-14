@@ -12,7 +12,7 @@ const signupHandler = async (event) => {
         const response = await fetch('/signup', {
             method: post,
             body: json.stringify({ username, email, password })
-        })
+        });
     }
 }
 // create a pop up saying successfully signed up

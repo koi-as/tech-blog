@@ -1,8 +1,11 @@
 const express = require('express');
-const path = require('path');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
-const helpers = require('./utils/helpers.js')
+const helpers = require('./utils/helpers.js');
+
+const path = require('path');
+
+const sequelize = require('./config/connection.js');
 
 const app = express();
 const PORT = 9352;
@@ -18,8 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
-app.listen(PORT, () => {
-    console.log('I am running')
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('I am running'));
 });
 
 // WHEN I visit the site for the first time

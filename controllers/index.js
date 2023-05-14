@@ -7,7 +7,7 @@ const users = require('./api');
 router.use('/', home);
 // localhost:9352/dashboard
 router.use('/dashboard', dashboard);
-// localhost:9352/api
+// localhost:9352/users
 router.use('/users', users);
 
 module.exports = router;
