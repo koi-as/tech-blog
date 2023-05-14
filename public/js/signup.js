@@ -9,12 +9,19 @@ const signupHandler = async (event) => {
     const password = document.querySelector('#inputPassword').value.trim();
 
     if (username && email && password) {
-        const response = await fetch('/signup', {
-            method: post,
-            body: json.stringify({ username, email, password })
+        const response = await fetch('/users/signup', {
+            method: 'POST',
+            body: JSON.stringify({ username, email, password }),
+            headers: { 'Content-Type': 'application/json' }
         });
-    }
-}
+
+        if (response.ok) {
+            document.location.replace('/users/login');
+        } else {
+            alert('Failed to signup');
+        };
+    };
+};
 // create a pop up saying successfully signed up
 // create error handlers for if a username is already taken
 // create error handler if email is not formatted as an email
